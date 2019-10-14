@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hacktoberfest Excluded Repository Search</title>
+    <script>
+        async function isExcluded(repo){
+            const response = await fetch('https://api.github.com/search/issues?q=won%27t+count+Hacktoberfest+type:issue+is:public+author:hacktoberfest-team+repo:'+repo);
+            const myJson = await response.json();
+            if(myJson.total_count == 0){
+                document.body.style.background = "#84f74a";
+            }
+            else{
+                document.body.style.background = "#f7694a";
+            }
+            return 0;
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" placeholder="USERNAME/REPOSITORY (e.g: unsuitable001/BitViz)" id="repo">
+            <button type="submit" class="searchButton" onclick="isExcluded(document.getElementById('repo').value);">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+    <div class="footer">
+        Credits : <br>
+        <a href="https://codepen.io/huange/pen/rbqsD">Boilerplate css is from "Simple Search Bar" by huange in CODEPEN</a>
+    </div>
+</body>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0%;
+    /* left: 50%;
+    transform: translate(0%, -50%); */
+}
+</style>
+</html>
