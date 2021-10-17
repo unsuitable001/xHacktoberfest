@@ -1,16 +1,18 @@
 # xHacktoberfest
-Search The Excluded Hacktoberfest Repositories
-Check if your **dream repository** is in the **Hacktoberfest** or not!
+Search The Excluded Hacktoberfest Repositories! 
+Check if your **dream repository** is participating in **Hacktoberfest** or not!
 
-## Format for search
+## Format for the search
 
 username/repostiory
 
-## If Repositoy is in the Hacktoberfest
+## The background changes based on your search
+
+If the repositoy is in the Hacktoberfest
 
 ![success](positive.png)
 
-## If Repositoy is not in the Hacktoberfest
+If the repositoy is not in the Hacktoberfest
 
 ![failure](negative.png)
 
